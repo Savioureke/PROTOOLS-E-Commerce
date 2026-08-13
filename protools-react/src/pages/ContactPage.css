@@ -1,0 +1,12 @@
+/* Contact Page Responsive Styles */
+@media (max-width: 1023px) {
+  .contact-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .contact-form .form-row {
+    grid-template-columns: 1fr !important;
+  }
+}

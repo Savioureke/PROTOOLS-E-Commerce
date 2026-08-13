@@ -1,29 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { getStoreInfo } from '../data/dataUtils';
-import { useToast } from '../context/ToastContext';
 import './AboutPage.css';
 
 export default function AboutPage() {
   const store = getStoreInfo();
-  const { add: toast } = useToast();
-  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
-  const [errors, setErrors] = useState({});
-  const [sent, setSent] = useState(false);
 
-  const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }));
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const errs = {};
-    if (!form.name.trim())    errs.name    = 'Name is required';
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Valid email required';
-    if (!form.message.trim()) errs.message = 'Message is required';
-    if (Object.keys(errs).length) { setErrors(errs); return; }
-    setErrors({});
-    setSent(true);
-    toast('Message sent! We\'ll get back to you within 24 hours.', 'success');
-    setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-  };
+  useEffect(() => {
+    document.title = 'About Us | PROTOOLS';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   return (
     <main className="page-content about-page" aria-label="About page">
@@ -34,14 +19,40 @@ export default function AboutPage() {
           <div className="about-hero-content">
             <h1>About PROTOOLS</h1>
             <p className="about-tagline">Kenya's Premier Power Tool Store</p>
-            <p>We're passionate about providing professional-grade tools to craftsmen, contractors, and DIY enthusiasts across Kenya. Every tool we stock meets our strict quality standards.</p>
+            <p>
+              Founded in Nairobi, PROTOOLS has grown from a local supplier to Kenya's leading online store for professional-grade power tools. 
+              We specialize in stocking high-performance, original equipment from world-class brands. 
+              Whether you are an industrial contractor managing a major construction site, a skilled craftsman, or a DIY home builder, 
+              we provide the tools, warranties, and technical support you need to get the job done right.
+            </p>
           </div>
         </div>
+
+        {/* Our Mission & Vision */}
+        <section className="about-vision section" aria-labelledby="vision-heading">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--s6)', marginTop: 'var(--s5)' }}>
+            <div className="card" style={{ padding: 'var(--s5)' }}>
+              <h3 style={{ color: 'var(--orange)', marginBottom: 'var(--s2)' }}>Our Mission</h3>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                To empower Kenyan builders, contractors, and artisans by delivering original, durable, and highly efficient power tools at competitive prices. 
+                We aim to eliminate the frustration of counterfeit tools by guaranteeing 100% authenticity on every product we sell.
+              </p>
+            </div>
+            <div className="card" style={{ padding: 'var(--s5)' }}>
+              <h3 style={{ color: 'var(--orange)', marginBottom: 'var(--s2)' }}>Our Promise</h3>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                We don't just sell tools; we partner with you on your projects. 
+                Every purchase at PROTOOLS comes backed by our comprehensive 1-year warranty, fast county-wide delivery, 
+                and lifetime technical advice from our dedicated team of tool specialists.
+              </p>
+            </div>
+          </div>
+        </section>
 
         {/* Values */}
         <section className="about-values section" aria-labelledby="values-heading">
           <h2 className="section-title" id="values-heading">Why Choose PROTOOLS</h2>
-          <div className="values-grid">
+          <div className="values-grid" style={{ marginTop: 'var(--s5)' }}>
             {[
               { icon: '🛡️', title: 'Quality Guaranteed', desc: 'All products come with manufacturer warranty and our satisfaction guarantee.' },
               { icon: '🚚', title: 'Fast Delivery',  desc: 'Same-day dispatch in Nairobi. Countrywide delivery within 2-3 business days.' },
@@ -57,55 +68,18 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Contact */}
-        <section className="about-contact section" aria-labelledby="contact-heading">
-          <h2 className="section-title" id="contact-heading">Get in Touch</h2>
-          <div className="contact-layout">
-            <div className="contact-info">
-              <div className="contact-card">
-                <h3>Contact Details</h3>
-                <ul className="contact-list">
-                  <li><span aria-hidden="true">📞</span><a href={`tel:${store.phone}`}>{store.phone}</a></li>
-                  <li><span aria-hidden="true">✉</span><a href={`mailto:${store.email}`}>{store.email}</a></li>
-                  <li><span aria-hidden="true">💬</span><a href={`https://wa.me/${store.whatsapp}`} target="_blank" rel="noopener noreferrer">WhatsApp Us</a></li>
-                  <li><span aria-hidden="true">📍</span><span>{store.location}</span></li>
-                  <li><span aria-hidden="true">🕘</span><span>Mon–Sat: 8am – 7pm</span></li>
-                </ul>
+        {/* Partner Brands */}
+        <section className="about-partners section" aria-labelledby="partners-heading" style={{ textAlign: 'center', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r-lg)', padding: 'var(--s6)' }}>
+          <h2 className="section-title" id="partners-heading" style={{ display: 'inline-block' }}>Our Brand Partners</h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', maxWidth: '600px', margin: 'var(--s3) auto var(--s5)' }}>
+            We work closely with the world's most trusted manufacturers to ensure you receive authorized, top-tier tools.
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--s6)', justifyContent: 'center', alignItems: 'center' }}>
+            {['DeWalt', 'Makita', 'Bosch', 'DERA', 'YDS'].map(brand => (
+              <div key={brand} style={{ fontSize: '1.5rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>
+                {brand}
               </div>
-            </div>
-            <form className="contact-form" onSubmit={handleSubmit} noValidate aria-label="Contact form">
-              {sent && (
-                <div className="contact-success" role="alert">✅ Message sent! We'll reply within 24 hours.</div>
-              )}
-              <div className="form-row">
-                <div className="form-field">
-                  <label htmlFor="cf-name" className="form-label">Name *</label>
-                  <input id="cf-name" className={`input${errors.name ? ' input-error' : ''}`} value={form.name} onChange={set('name')} placeholder="Your name" />
-                  {errors.name && <span className="field-error" role="alert">{errors.name}</span>}
-                </div>
-                <div className="form-field">
-                  <label htmlFor="cf-email" className="form-label">Email *</label>
-                  <input id="cf-email" type="email" className={`input${errors.email ? ' input-error' : ''}`} value={form.email} onChange={set('email')} placeholder="your@email.com" />
-                  {errors.email && <span className="field-error" role="alert">{errors.email}</span>}
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="form-field">
-                  <label htmlFor="cf-phone" className="form-label">Phone</label>
-                  <input id="cf-phone" type="tel" className="input" value={form.phone} onChange={set('phone')} placeholder="0712 054 061" />
-                </div>
-                <div className="form-field">
-                  <label htmlFor="cf-subject" className="form-label">Subject</label>
-                  <input id="cf-subject" className="input" value={form.subject} onChange={set('subject')} placeholder="Product enquiry..." />
-                </div>
-              </div>
-              <div className="form-field">
-                <label htmlFor="cf-message" className="form-label">Message *</label>
-                <textarea id="cf-message" className={`input textarea${errors.message ? ' input-error' : ''}`} rows={5} value={form.message} onChange={set('message')} placeholder="How can we help you?" />
-                {errors.message && <span className="field-error" role="alert">{errors.message}</span>}
-              </div>
-              <button type="submit" className="btn btn-primary btn-lg">Send Message</button>
-            </form>
+            ))}
           </div>
         </section>
 
