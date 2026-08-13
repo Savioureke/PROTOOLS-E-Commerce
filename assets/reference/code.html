@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PROTOOLS Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'protools-black': '#0A0A0A',
+            'protools-dark': '#111111',
+            'protools-card': '#1A1A1A',
+            'protools-red': '#E31E24',
+            'protools-orange': '#FF6A00',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'sans-serif'],
+            'condensed': ['Oswald', 'sans-serif'],
+            'archivo': ['Archivo Narrow', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&display=swap');
+  </style>
+<style data-purpose="hero-background">
+    .hero-bg {
+      background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 45%, rgba(227, 30, 36, 0.15) 50%, transparent 55%);
+      transform: rotate(15deg);
+      pointer-events: none;
+    }
+  </style>
+<style data-purpose="ribbon">
+    .ribbon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(90deg, #E31E24, #FF6A00);
+      color: white;
+      padding: 0.25rem 1.5rem;
+      font-weight: bold;
+      font-size: 0.875rem;
+      transform: translate(25%, -25%) rotate(45deg);
+      transform-origin: bottom left;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .ribbon-wrapper {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      z-index: 10;
+      border-radius: 0 12px 0 0;
+    }
+    
+    .gradient-outline {
+      background: linear-gradient(#0A0A0A, #0A0A0A) padding-box,
+                  linear-gradient(to right, #E31E24, #FF6A00) border-box;
+      border: 2px solid transparent;
+    }
+    
+    .btn-gradient {
+      background: linear-gradient(to right, #E31E24, #FF6A00);
+    }
+  </style>
+</head>
+<body class="bg-protools-black text-white font-sans antialiased min-h-screen text-[0.875rem]">
+<!-- BEGIN: Header -->
+<header class="bg-protools-dark border-b border-gray-800 py-4 px-6 flex justify-between items-center z-50 relative">
+<div class="flex items-center gap-8 w-full max-w-screen-2xl mx-auto">
+<a class="flex-shrink-0" href="#">
+<img alt="PROTOOLS Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLui1FkWT-QPNVTdgbRPo3olsVf2-2e0-2j9rqO9FB2OSLG1BXPqtwXG3by8qQZ1oM7Q0Hd0Xj3uWVNt650-wGevIdY01GHFc4HrbOMbecaLGzkCPWaRAw5pYU5ZH5Im488wx8rT1u1D-wMxydI34V5p1wopZJ-_OKWAb9s-GD9Agcw623VVj1YjVk1HI2c4L5Lrooc5aVTzh7yxT510U_w-YCpGGz0Dr72XebJ3DYVS389gHFCXcv1sjOk"/>
+</a>
+<div class="flex-grow max-w-2xl hidden md:block">
+<div class="relative">
+<input class="w-full bg-gray-900 border border-gray-700 text-white rounded-full py-2 px-6 pr-12 focus:outline-none focus:border-protools-red focus:ring-1 focus:ring-protools-red text-sm" placeholder="SEARCH FOR TOOLS..." type="text"/>
+<button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-6 ml-auto">
+<nav class="hidden lg:flex gap-6 text-sm font-medium uppercase tracking-wider">
+<a class="hover:text-protools-red transition-colors" href="#">Categories</a>
+<a class="hover:text-protools-red transition-colors" href="#">Products</a>
+<a class="hover:text-protools-red transition-colors" href="#">Offers</a>
+<a class="hover:text-protools-red transition-colors" href="#">Blog</a>
+</nav>
+<div class="flex items-center gap-4 border-l border-gray-700 pl-6">
+<button class="text-gray-300 hover:text-white">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+<button class="text-gray-300 hover:text-white relative">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+<span class="absolute -top-1 -right-2 bg-protools-red text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- END: Header -->
+<!-- BEGIN: Main Content Area -->
+<main class="max-w-screen-2xl mx-auto flex flex-col lg:flex-row min-h-screen">
+<!-- BEGIN: Left Column (70%) -->
+<div class="w-full lg:w-[70%] flex flex-col border-r border-gray-800">
+<!-- BEGIN: Hero Section -->
+<section class="hero-bg min-h-[500px] lg:min-h-[600px] flex items-center relative px-8 lg:px-16 py-12 border-b border-gray-800 mb-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full z-10">
+<div class="space-y-6">
+<div class="inline-block px-3 py-1 bg-protools-red/20 text-protools-red text-xs font-bold uppercase tracking-widest rounded-sm border border-protools-red/30">
+              Sport Edition
+            </div>
+<h1 class="font-condensed text-5xl lg:text-7xl font-bold leading-tight uppercase">
+              New Arrivals<br/>
+<span class="text-protools-red">Power Tool Deals</span>
+</h1>
+<p class="text-gray-400 text-lg max-w-md">
+              Professional grade gear for the master craftsman. Built to last, engineered to perform.
+            </p>
+<a class="inline-block btn-gradient text-white font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:scale-105 transition-transform" href="#">
+              Shop Now
+            </a>
+</div>
+<div class="relative h-64 md:h-full min-h-[300px] flex items-center justify-center">
+<!-- Placeholder for Hero Product Image -->
+<img alt="Makita Circular Saw" class="max-w-full max-h-full object-contain filter drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnASN6SjdgGP7LwGBqEJ1JF4IMP5Lr1TFMQ_oQ3xLKo_GuESX5Mf26LsT6ogC3o4C_SM7yVvtx_tn1GJ58ngvUKOPacFFqS8YeGccAqULgkEEloLKjvFm-3BZxNX3dctCHkVuyKxgJI7Sxl-Je5lakdFAZJ-dXXUzltOSVgZRQtYpmKuMTqf9AfkxxrY8Uiuzt-ROQV6KajDIewBTE9YSP8WpayQRAwyJGQ4jS-qvfLxoCZp58b18G"/>
+</div>
+</div>
+<!-- Carousel Controls -->
+<button class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full backdrop-blur-sm transition-colors z-20">
+<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full backdrop-blur-sm transition-colors z-20">
+<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Carousel Dots -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+<button class="w-3 h-3 rounded-full bg-protools-red"></button>
+<button class="w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400"></button>
+<button class="w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400"></button>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Promo Banners (2 Columns) -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 lg:px-8 mb-16">
+<!-- Banner 1 -->
+<div class="bg-protools-card rounded-xl p-6 relative overflow-hidden flex items-center justify-between border border-gray-800 hover:border-gray-600 transition-colors group">
+<div class="ribbon-wrapper">
+<div class="ribbon">6,500/=</div>
+</div>
+<div class="z-10 w-1/2">
+<h3 class="font-condensed text-protools-red text-xl font-bold uppercase mb-1">Makita Tool Kit</h3>
+<p class="text-white text-2xl font-bold uppercase mb-4 leading-none">Premium<br/>Performance</p>
+<a class="inline-block bg-white text-protools-black text-xs font-bold py-2 px-6 rounded-lg uppercase tracking-wider hover:bg-gray-200 hover:scale-105 transition-transform" href="#">Shop Now</a>
+</div>
+<div class="w-1/2 h-32 relative">
+<img alt="Makita Tool Kit" class="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChHBFTJ77wpAahjAPUVoaKsMlHRRjBSUdUZaKZRvYs9Hmt1eAz9b_o5uQp1ueYT1vBqYrRjwLXal7keKjaGGX-B9vW0uGZYM0eH_JQLmzpGKEYy3PE2jX2Ti16b_bSLzS1bOas-MW3f1oBRyk2trYG41MnfonfJQgNWpxHXJMtdo-U7U16b5dWQg0LZCltgV9tBYH8JXy4roNIAdIHId4v6YJxk3aIBDPCSD0Z8tJZI-0o1MEoG7qS"/>
+</div>
+</div>
+<!-- Banner 2 -->
+<div class="bg-gradient-to-br from-protools-red to-protools-orange rounded-xl p-6 relative overflow-hidden flex items-center justify-between group">
+<div class="ribbon-wrapper">
+<div class="ribbon bg-white text-protools-red" style="background: white; color: #E31E24;">9,999/=</div>
+</div>
+<div class="z-10 w-1/2">
+<h3 class="font-condensed text-yellow-400 text-xl font-bold uppercase mb-1">Bosch Drill</h3>
+<p class="text-white text-2xl font-bold uppercase mb-4 leading-none">Better<br/>Brakes</p>
+<a class="inline-block bg-white text-protools-red text-xs font-bold py-2 px-6 rounded-lg uppercase tracking-wider hover:bg-gray-100 hover:scale-105 transition-transform" href="#">Shop Now</a>
+</div>
+<div class="w-1/2 h-32 relative">
+<img alt="Bosch Rotary Hammer Drill" class="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbl1-khrh1WWsAnncsCgmLh8rs5owSg9zpWU0o9Q1EoZQP4-I7c7Z9TijdLB1a-73emQbaQIL9cixNqq1fJVyC57BGRb7_keQLLlJi-XA29MgcwpkeCXRpJcOj16Q-FYbpoozEXmaa0JAGbMkn5xVnREBKm6AxW9nkZUaYocKk1cEO6i1KjGG5PY0QF_706YdbyssZ48WUc8DWPsW3VMw78iX6sjaT_JKjm_K2ZN2gDn4P8MpEM3xH"/>
+</div>
+</div>
+</section>
+<!-- END: Promo Banners -->
+<!-- BEGIN: Category Icon Row -->
+<section class="px-6 lg:px-8 mb-16">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+<a class="flex flex-col items-center group cursor-pointer" href="#">
+<div class="w-24 h-24 rounded-full gradient-outline flex items-center justify-center bg-protools-black mb-3 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(227,30,36,0.2)] group-hover:shadow-[0_0_20px_rgba(227,30,36,0.4)]">
+<svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l-2 2h4l-2-2zM4 6h16v2H4zm2 4h12v10H6z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h4 class="font-bold text-sm text-center uppercase tracking-wide">Power Drills</h4>
+<p class="text-xs text-gray-500 text-center">Cordless, Corded, Hammer</p>
+</a>
+<a class="flex flex-col items-center group cursor-pointer" href="#">
+<div class="w-24 h-24 rounded-full gradient-outline flex items-center justify-center bg-protools-black mb-3 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(227,30,36,0.2)] group-hover:shadow-[0_0_20px_rgba(227,30,36,0.4)]">
+<svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h4 class="font-bold text-sm text-center uppercase tracking-wide">Welding Machines</h4>
+<p class="text-xs text-gray-500 text-center">ARC, MIG, TIG</p>
+</a>
+<a class="flex flex-col items-center group cursor-pointer" href="#">
+<div class="w-24 h-24 rounded-full gradient-outline flex items-center justify-center bg-protools-black mb-3 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(227,30,36,0.2)] group-hover:shadow-[0_0_20px_rgba(227,30,36,0.4)]">
+<svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h4 class="font-bold text-sm text-center uppercase tracking-wide">Laser Levels</h4>
+<p class="text-xs text-gray-500 text-center">Self-Leveling, Rotary</p>
+</a>
+<a class="flex flex-col items-center group cursor-pointer" href="#">
+<div class="w-24 h-24 rounded-full gradient-outline flex items-center justify-center bg-protools-black mb-3 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(227,30,36,0.2)] group-hover:shadow-[0_0_20px_rgba(227,30,36,0.4)]">
+<svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22a10 10 0 100-20 10 10 0 000 20zm0-16a6 6 0 110 12 6 6 0 010-12z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h4 class="font-bold text-sm text-center uppercase tracking-wide">Circular Saws</h4>
+<p class="text-xs text-gray-500 text-center">Brushless, Compact</p>
+</a>
+<a class="flex flex-col items-center group cursor-pointer" href="#">
+<div class="w-24 h-24 rounded-full gradient-outline flex items-center justify-center bg-protools-black mb-3 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(227,30,36,0.2)] group-hover:shadow-[0_0_20px_rgba(227,30,36,0.4)]">
+<svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h4 class="font-bold text-sm text-center uppercase tracking-wide">Pressure Washers</h4>
+<p class="text-xs text-gray-500 text-center">Electric, Gas</p>
+</a>
+<a class="flex flex-col items-center group cursor-pointer" href="#">
+<div class="w-24 h-24 rounded-full gradient-outline flex items-center justify-center bg-protools-black mb-3 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(227,30,36,0.2)] group-hover:shadow-[0_0_20px_rgba(227,30,36,0.4)]">
+<svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h4 class="font-bold text-sm text-center uppercase tracking-wide">Tool Kits</h4>
+<p class="text-xs text-gray-500 text-center">Mechanics, Home</p>
+</a>
+</div>
+</section>
+<!-- END: Category Icon Row -->
+<!-- BEGIN: Best Sellers Section -->
+<section class="px-6 lg:px-8 mb-16">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<h2 class="font-condensed text-[2rem] font-bold uppercase tracking-wide">Best Sellers</h2>
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-full text-sm font-bold bg-gray-800 text-gray-300 hover:bg-gray-700 transition">Top Rated</button>
+<button class="px-4 py-2 rounded-full text-sm font-bold btn-gradient text-white shadow-[0_0_10px_rgba(227,30,36,0.3)] transition">Popular</button>
+<button class="px-4 py-2 rounded-full text-sm font-bold bg-gray-800 text-gray-300 hover:bg-gray-700 transition">New Arrivals</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Product Card 1 -->
+<div class="bg-protools-card rounded-xl p-6 border border-gray-800 hover:border-gray-600 transition-all group relative">
+<div class="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-protools-red transition">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="h-48 mb-4 flex items-center justify-center bg-white/5 rounded-lg">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0rSFn75UNjZSPLEjW0rrxo3fwC1ry78DtO7_2OCYaG30e__-6TGJJgj1CoD5ibLnKlWv1ycW1pDfmc80RtqpAlmOrVa3eudRSr76m0qaSE2ds9XhzIUA1v5Pbbjvz_tWzoCHsWmv0Nx8flQOUENHmWNSQieHy2lSk472wA-SOYnhbmrLDQbSoUxZ41Bd4uCV-VAJRHsDyG9QcEyf6eZbB7MV2YGssSeG0bxCyqnp9WPArWpXlFUAi"/>
+</div>
+<div class="flex items-center gap-1 mb-2 text-yellow-500">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs text-gray-400">(4.8)</span>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">Makita 88V Cordless Drill Kit</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$145.00</span>
+<span class="text-gray-500 line-through text-sm">$180.00</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-protools-card rounded-xl p-6 border border-gray-800 hover:border-gray-600 transition-all group relative">
+<div class="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-protools-red transition">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="h-48 mb-4 flex items-center justify-center bg-white/5 rounded-lg">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlI0G6aKZI2ieRN77mSf837x3wGRa-RbXtC80xkqB8-g9G-UtdA67ybOJwqzpxzjviYENKMDHIz_A2qeExaQrYq7W4d011J19BczSg-BcakRuLADA9Va7eNck8inwbbOO_xHoFPqtUGdsHG6pQ0Sh56CTvKkybRZojz_Z8jDAT77F_fe8w2EWLyiREU9yCiYYsvR-z6ZlX2erFnf7GolmterydnWtSf3R_YP4dPhIn2C6m6woPixuB"/>
+</div>
+<div class="flex items-center gap-1 mb-2 text-yellow-500">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs text-gray-400">(4.9)</span>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">DeWalt Cordless Combo Kit</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$299.00</span>
+<span class="text-gray-500 line-through text-sm">$350.00</span>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-protools-card rounded-xl p-6 border border-gray-800 hover:border-gray-600 transition-all group relative">
+<div class="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-protools-red transition">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="h-48 mb-4 flex items-center justify-center bg-white/5 rounded-lg">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWpbToAySHkEfONz0wYvXlKAmBUxaY0YxYiViBXenf5BWDm8TV_yyObU8YRNCvD3UQsLddKWzoSyX2AIJP90HtG4kTIMJfCbbou0FJulYnQ6EAHOJ7tW2RlsF86vOdPeNd4F0ke08WviQcVDB8kl6oAa8Cd_lJ_HJfgXEO3I_ZKRm0nRdb8z6bPKI8fiDMdHOyBt2_3i9lAZ0gVf_Ukj06BHIaiTMbElCvIHA0ZOAlo6LkukyNxvQa"/>
+</div>
+<div class="flex items-center gap-1 mb-2 text-yellow-500">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs text-gray-400">(4.5)</span>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">DeWalt Rotary Hammer Drill</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$125.00</span>
+<span class="text-gray-500 line-through text-sm">$160.00</span>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-protools-card rounded-xl p-6 border border-gray-800 hover:border-gray-600 transition-all group relative">
+<div class="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-protools-red transition">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="h-48 mb-4 flex items-center justify-center bg-white/5 rounded-lg">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMVpov3wGafKltQ-92aXJci3te2BFtwYyAo1Ufdz43i9cntEvw3kZcd3kaObeF7q4tMtAuqaHeJUkju58575dnFKjl6HoARfMOSGStzlTIpVaFQ_MOjMgjxbLQifH6jZG8AUHHJcL6EsrX7EDSqB8FScm-LOczGJbbD6mf5uoDxc2s486f8uZyNfq2jb1YH5aOceF_vNqK5ncH4aT1V5gNJrE9gYJRePQxgHKjzogzV8LGmZVl0UTf"/>
+</div>
+<div class="flex items-center gap-1 mb-2 text-yellow-500">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs text-gray-400">(4.7)</span>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">Makita Rotary Hammer Kit</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$210.00</span>
+<span class="text-gray-500 line-through text-sm">$250.00</span>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="bg-protools-card rounded-xl p-6 border border-gray-800 hover:border-gray-600 transition-all group relative">
+<div class="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-protools-red transition">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="h-48 mb-4 flex items-center justify-center bg-white/5 rounded-lg">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuCDzW3VFqmuV--hCjN1WhnWy7Od-lxFL7DRh-7EwaIbwBa6DDH4sZazYebQuMFs0bnQ0I7AehvAkqqi92kflwMnBbYAZadxtO0gjoABIN_ala9O3MgqMEKwiPVzI3XsBCSC9tm30TrfJCXUdbzJ595FtD8bsEpITJMlO1w0gWexKL2bNEcE0drVksv5XEH0ZMNGQbxB_SGEaa8ww34uTnBrxFggkvwE01MW4J0nOgAzHk74YDw0Y8"/>
+</div>
+<div class="flex items-center gap-1 mb-2 text-yellow-500">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs text-gray-400">(4.6)</span>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">DeWalt Laser Level Kit</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$189.00</span>
+<span class="text-gray-500 line-through text-sm">$220.00</span>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="bg-protools-card rounded-xl p-6 border border-gray-800 hover:border-gray-600 transition-all group relative">
+<div class="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-protools-red transition">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="h-48 mb-4 flex items-center justify-center bg-white/5 rounded-lg">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApMQdwLc6Csxd9WhrvL9NHa98y1owA1yBSJoWv47In8N_jxHHYgTCtYy21wXRLmidNgMrlcAKU6QGmEK7qrGvF2wbuh0gzER17l2Mrke3vwF_uXKlFdh4F1MftM9E7Ofvv0BgyWpKcl666QPYHrgg5S8sJtASzrTOA9hX3ijw8MOycjMNK1nTSm38P_MzVTGUzf1tjDSAUeKeEZ06zyFBCJ_2R7PXImegdZRtQgHWJsSwSaOZBFqFf"/>
+</div>
+<div class="flex items-center gap-1 mb-2 text-yellow-500">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs text-gray-400">(5.0)</span>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">Makita Complete Tool Kit</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$499.00</span>
+<span class="text-gray-500 line-through text-sm">$600.00</span>
+</div>
+</div>
+<!-- Product Card 7 -->
+<div class="bg-protools-card rounded-xl p-6 border border-gray-800 hover:border-gray-600 transition-all group relative">
+<div class="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-protools-red transition">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="h-48 mb-4 flex items-center justify-center bg-white/5 rounded-lg">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALqMt3yamvts3TjMO_b10hVq-vX9uQB4WDb8uW1yJ_GMVW3VLlOLuMMCLTUAdfjRSsCJ1O2jwttaXfrULvgFLZVkAWkWZluybmonJUfM3Os7iKV0oSgkLidTPb2XkXwECoY9V5lZViutO7spubMG3lSk7IsuXASYrv4bNAd4-wd7wKj-ooe9x6zs9_2sUp41wxOSFoT8frxVfNXQgP8NLcGUTFBCo2ey-NPwXIB4FbScmyeQVKdCZW"/>
+</div>
+<div class="flex items-center gap-1 mb-2 text-yellow-500">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs text-gray-400">(4.3)</span>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">YDS Pressure Washer</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$245.00</span>
+<span class="text-gray-500 line-through text-sm">$280.00</span>
+</div>
+</div>
+<!-- Product Card 8 -->
+<div class="bg-protools-card rounded-xl p-6 border border-gray-800 hover:border-gray-600 transition-all group relative">
+<div class="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-protools-red transition">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="h-48 mb-4 flex items-center justify-center bg-white/5 rounded-lg">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBIMn4B2-nKhV9goHTGNsEwXl0qLR6WtUAicZgxE7G79MDbPrJCKlcf4e13dNqfoEFXDrbh-C0bOTacBRjEp_aLS6n5x7Dy6XaBG8UVoS8usTth9_ojDvMdJn1RDg1ssM35GY-D_ShhO0muGFmU34xP5l7qkO_JiuL3F_2lB6SWdytqzhBnrR152W0aF6M7w_S3JCyiawqiyqDKkJcrHDrYIXEhQX9amcb5J0eyOQyDetY_F7yyNXi"/>
+</div>
+<div class="flex items-center gap-1 mb-2 text-yellow-500">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs text-gray-400">(4.4)</span>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">DERA Washer Machine</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$315.00</span>
+<span class="text-gray-500 line-through text-sm">$360.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Best Sellers Section -->
+<!-- BEGIN: Flash Sale Section -->
+<section class="px-6 lg:px-8 mb-16">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 bg-[#111] p-6 rounded-xl border border-gray-800">
+<h2 class="font-condensed text-[2rem] font-bold uppercase tracking-wide text-protools-red flex items-center gap-2">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            Flash Sale
+        </h2>
+<div class="flex items-center gap-2 bg-black px-4 py-2 rounded-lg border border-gray-800">
+<span class="text-gray-400 text-sm font-bold uppercase">Ends in:</span>
+<div class="flex items-center gap-1 text-protools-red font-mono text-xl font-bold">
+<span class="bg-gray-900 px-2 py-1 rounded">12</span>:
+                <span class="bg-gray-900 px-2 py-1 rounded">45</span>:
+                <span class="bg-gray-900 px-2 py-1 rounded">30</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Flash Product 1 -->
+<div class="bg-protools-card rounded-xl p-6 border border-protools-red/30 hover:border-protools-red transition-all group relative">
+<div class="absolute top-4 left-4 z-10 bg-protools-red text-white text-[10px] font-bold px-2 py-1 rounded uppercase">SALE</div>
+<div class="h-40 mb-4 flex items-center justify-center bg-white/5 rounded-lg mt-4">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmtXdXk_hRw2aLcCHcfS9tJ-qGxfyU67jNmJD4a7uopNV_JqHhdT_ReinjI3NIB75HlSkdQC6Sh3LbVTBXzctYPTeAi-gBkBxzwc-_oT0V-hEgYZac8fUAUC_dtrqrbYoR5fSCwaxNKurffprs8uU0o-mNaGvoHjWmHO1VJthvnfjmib-6XA6hqXphBzVmX18il9mRmfFrwHfcr9_xiRoY3i7X0ZHClfdfDtmQ3euIk-9buhdkkUie"/>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">Makita Welding Machine</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$210.00</span>
+<span class="text-gray-500 line-through text-sm">$290.00</span>
+</div>
+</div>
+<!-- Flash Product 2 -->
+<div class="bg-protools-card rounded-xl p-6 border border-protools-red/30 hover:border-protools-red transition-all group relative">
+<div class="absolute top-4 left-4 z-10 bg-protools-red text-white text-[10px] font-bold px-2 py-1 rounded uppercase">SALE</div>
+<div class="h-40 mb-4 flex items-center justify-center bg-white/5 rounded-lg mt-4">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA01Qi8ZboFcF31a1XcLVOTrAy7iTkC_2qkZVW-I0ADlgLPMhmjtyvifGp8Kbh9Sv5MqMH2-EpyYuABf35h9YSxemdWnfn2oGe4AoPcX2xPemF1BlrAIMs7iGdxNlD50Oyg70PPgAKoGuxMaTs4EU6tWFAhl0WgifOcHzxnVvWOhwp5HZdjS44-_V_jK3-WyJnhZp8ND33ciKC11hoETzkg7udAiwUzEYkmFn3gWfiT85ceJIHjmGSj"/>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">DeWalt Welding Machine</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$255.00</span>
+<span class="text-gray-500 line-through text-sm">$320.00</span>
+</div>
+</div>
+<!-- Flash Product 3 -->
+<div class="bg-protools-card rounded-xl p-6 border border-protools-red/30 hover:border-protools-red transition-all group relative">
+<div class="absolute top-4 left-4 z-10 bg-protools-red text-white text-[10px] font-bold px-2 py-1 rounded uppercase">SALE</div>
+<div class="h-40 mb-4 flex items-center justify-center bg-white/5 rounded-lg mt-4">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9e103i4_5Xgh1PwzZAFDTTbJajhP71o4ewhEwceA1puBzjCen2wd76xGyYAqBVjmyZG-oIlOjKdFw_TqlJdj9wvjXMRpUux_0TfTnRgh-V4QW0bRrhGoE3hhSHhMt1fcsVEveYac2YalE5cjpJ8aQeQ2n1_saqF6FAql-ShCDKLeaWqyP6aZ9dtFY1oWSrYQ9xu8j6Ksj1PqspQVXmG00KgmITSkkz-w6scouov8u3R1G3aZ1c9DJ"/>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">Bosch Rotary Hammer Drill</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$110.00</span>
+<span class="text-gray-500 line-through text-sm">$155.00</span>
+</div>
+</div>
+<!-- Flash Product 4 -->
+<div class="bg-protools-card rounded-xl p-6 border border-protools-red/30 hover:border-protools-red transition-all group relative">
+<div class="absolute top-4 left-4 z-10 bg-protools-red text-white text-[10px] font-bold px-2 py-1 rounded uppercase">SALE</div>
+<div class="h-40 mb-4 flex items-center justify-center bg-white/5 rounded-lg mt-4">
+<img alt="Product" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBefhrsQRvr9s1Caet6TohDka9Z-H426ku0rVj78fGEBi9VctE6l_oio0CT6LvUI8rabZ21JdwFVRh-bAevfDfxM5mgMdrZafItwu4IZrTdwULkEbC9EMAwNWzftNoCHfu9NYsNi8UUKiz5caBo_GrA0Tu92XdzKBYxte0VpaK4Vbo4TsptTupA_xDJ8lXcx-0a_r3ebAlWQTCKuSofbkH7hc8LpQrubgRV1VQ5iurKGmhaudON3N7-"/>
+</div>
+<h3 class="font-semibold text-white text-[1.125rem] mb-2 truncate">DeWalt Laser Level Kit</h3>
+<div class="flex items-end gap-2">
+<span class="text-protools-red font-bold text-lg">$145.00</span>
+<span class="text-gray-500 line-through text-sm">$199.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Flash Sale Section -->
+</div>
+<!-- END: Left Column -->
+<!-- BEGIN: Right Sidebar (30%) -->
+<aside class="w-full lg:w-[30%] bg-[#0A0A0A] p-6 lg:p-8 flex flex-col gap-16">
+<!-- Choose Your Plan -->
+<div>
+<h3 class="font-condensed text-[2rem] font-bold uppercase mb-8 tracking-wide border-b border-gray-800 pb-2">Choose Your Plan</h3>
+<div class="space-y-4">
+<div class="bg-protools-card p-6 rounded-xl border border-gray-800 flex justify-between items-center cursor-pointer hover:border-gray-600 transition">
+<div><h4 class="font-bold text-sm">Basic</h4><p class="text-xs text-gray-500">1 Year Warranty</p></div>
+<div class="text-sm font-bold">Free</div>
+</div>
+<div class="bg-protools-card p-6 rounded-xl border border-gray-800 flex justify-between items-center cursor-pointer hover:border-gray-600 transition">
+<div><h4 class="font-bold text-sm">Premium</h4><p class="text-xs text-gray-500">2 Year Extended</p></div>
+<div class="text-sm font-bold">$29/yr</div>
+</div>
+<div class="bg-protools-card p-6 rounded-xl border-2 border-protools-red flex justify-between items-center cursor-pointer shadow-[0_0_15px_rgba(227,30,36,0.15)] relative">
+<div class="absolute -top-2.5 right-4 bg-protools-red text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Most Popular</div>
+<div><h4 class="font-bold text-sm text-protools-red">Pro Warranty</h4><p class="text-xs text-gray-400">3 Year + Priority Repair</p></div>
+<div class="text-sm font-bold text-protools-red">$49/yr</div>
+</div>
+<div class="bg-protools-card p-6 rounded-xl border border-gray-800 flex justify-between items-center cursor-pointer hover:border-gray-600 transition">
+<div><h4 class="font-bold text-sm">Full Service</h4><p class="text-xs text-gray-500">Lifetime + Replacement</p></div>
+<div class="text-sm font-bold">$99/yr</div>
+</div>
+</div>
+</div>
+<!-- Service Promo Card -->
+<div class="bg-protools-card rounded-xl overflow-hidden border border-gray-800">
+<div class="h-40 bg-gray-800 relative">
+<img alt="Service" class="w-full h-full object-cover opacity-60 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvauKWWXfiF2dEaimlc8LYrS1sw172cX0-zT_8KTBrF361bc04hnVJ4o6Ad3rZ7qFYk_iECj8BjB1l01wYtWXbbudBJQJuQeTmuBr2A-VOJa5IjtCXIRNOBzJnqtKdYvEVlGPhWtsCevbFju_qVEHZnAeQYRCgJaFo3aEMfMZXveLvjAiIrhqvG1GswUV4AM2kzZhonAAdDRByQ5Lqh8mfbd9QJdv-3z0oEXkbetmeCxvJf0TrlpU-"/>
+<div class="absolute inset-0 bg-gradient-to-t from-protools-card to-transparent"></div>
+<h3 class="absolute bottom-4 left-6 font-condensed text-xl font-bold uppercase">Tool Servicing &amp; Installation</h3>
+</div>
+<div class="p-6 space-y-4">
+<p class="text-sm text-gray-400">Keep your tools running like new with our professional maintenance and repair services.</p>
+<ul class="space-y-2 text-sm">
+<li class="flex items-center gap-2"><svg class="w-4 h-4 text-protools-red" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg> Free Pickup &amp; Delivery</li>
+<li class="flex items-center gap-2"><svg class="w-4 h-4 text-protools-red" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg> Certified Technicians</li>
+<li class="flex items-center gap-2"><svg class="w-4 h-4 text-protools-red" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg> Genuine Parts</li>
+</ul>
+<button class="w-full btn-gradient text-white font-bold py-3 rounded-lg uppercase text-sm hover:scale-105 transition-transform">Book Now</button>
+</div>
+</div>
+<!-- Shop by Category Widget -->
+<div>
+<h3 class="font-condensed text-[2rem] font-bold uppercase mb-8 tracking-wide border-b border-gray-800 pb-2">Shop by Category</h3>
+<ul class="space-y-2">
+<li><a class="flex items-center justify-between p-4 bg-protools-card/50 hover:bg-protools-card rounded-xl border border-transparent hover:border-gray-800 text-sm text-gray-300 hover:text-white transition group" href="#"><span class="flex items-center gap-3"><svg class="w-5 h-5 text-gray-500 group-hover:text-protools-red" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Power Tools</span><svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a></li>
+<li><a class="flex items-center justify-between p-4 bg-protools-card/50 hover:bg-protools-card rounded-xl border border-transparent hover:border-gray-800 text-sm text-gray-300 hover:text-white transition group" href="#"><span class="flex items-center gap-3"><svg class="w-5 h-5 text-gray-500 group-hover:text-protools-red" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg> Hand Tools</span><svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a></li>
+<li><a class="flex items-center justify-between p-4 bg-protools-card/50 hover:bg-protools-card rounded-xl border border-transparent hover:border-gray-800 text-sm text-gray-300 hover:text-white transition group" href="#"><span class="flex items-center gap-3"><svg class="w-5 h-5 text-gray-500 group-hover:text-protools-red" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg> Tool Storage</span><svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a></li>
+<li><a class="flex items-center justify-between p-4 bg-protools-card/50 hover:bg-protools-card rounded-xl border border-transparent hover:border-gray-800 text-sm text-gray-300 hover:text-white transition group" href="#"><span class="flex items-center gap-3"><svg class="w-5 h-5 text-gray-500 group-hover:text-protools-red" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg> Accessories</span><svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a></li>
+</ul>
+</div>
+<!-- Mini Best Sellers Widget -->
+<div>
+<h3 class="font-condensed text-[2rem] font-bold uppercase mb-8 tracking-wide border-b border-gray-800 pb-2">Top Picks</h3>
+<div class="space-y-6">
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-20 h-20 bg-protools-card rounded-xl flex items-center justify-center p-3 shrink-0 border border-gray-800 group-hover:border-gray-600 transition-colors"><img alt="Thumb" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-yxcHw0ozhiiTMgNp-GkMgM4YQAV1ORLBS7X6n_OFmHu-aT98oda3rfFVbH2_w_jTJJBFU_WrJVSm-6hrMEJQHpvKrNogzAy4tTK8RAQ8mGcJ11hfKXAXTC5cBIClVoAYSHOikXIAQjlCbgEjrRbf17S10TNFDyOZnDSVjnIHg-zCfLhQBPPhpA2CD6Yb_PiGdSAM0_nsvdlTKqPNSt1a2_r1-lUM1Ts3AcW5DXm5dsPbGi5UaqlE"/></div>
+<div><h4 class="font-semibold text-[1.125rem] text-gray-300 group-hover:text-white transition line-clamp-1">Makita Impact Driver</h4><div class="text-protools-red font-bold text-sm mt-1">$129.00</div></div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-20 h-20 bg-protools-card rounded-xl flex items-center justify-center p-3 shrink-0 border border-gray-800 group-hover:border-gray-600 transition-colors"><img alt="Thumb" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPdm9vrz4FcUyQ6_I28qbz69v8uQwVDAGbC-ebVjvqlphMJyvkJK919quGhUJXwbccF93apgZW2MDKa4cqnyAxbTEn_RP_nPeIE-sHJ38ksieMVVKatcKeGSQAEtKoect77b1BWI3qFaP-zz9TlshshlEGrBcdXiXoWYwPspDEvDHgwZJG1wBkJkaAtBGstNuAHHEH5lGufFHNNH9h9fuvH0kqWhto5ShxuRON948x3xgiz9Gdrt3j"/></div>
+<div><h4 class="font-semibold text-[1.125rem] text-gray-300 group-hover:text-white transition line-clamp-1">DeWalt Table Saw</h4><div class="text-protools-red font-bold text-sm mt-1">$349.00</div></div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-20 h-20 bg-protools-card rounded-xl flex items-center justify-center p-3 shrink-0 border border-gray-800 group-hover:border-gray-600 transition-colors"><img alt="Thumb" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjtDfJZi5GSK8pp1MAwzxLTxfiYBcIgwL1sIK6R9aItGZz1ZSTEFWCvFZdUQZUMKi7kFoUpgqdSdf4sb6usCT5vsU9wDt9HvYkWp0NXfgJu4zDB2EDK29jkHijhWP9ZzPsnFAWDcmRbBNNUNC0Gz1tjKy9DXIsUAWBVoWiOHXUjXhC8kVlNelXtLVEYy9EtqO2-pbJbW5OiaT2WPNPgcM3hbcsmazD3pUW7FxX-qtgwR37RjEXzhtv"/></div>
+<div><h4 class="font-semibold text-[1.125rem] text-gray-300 group-hover:text-white transition line-clamp-1">Bosch Angle Grinder</h4><div class="text-protools-red font-bold text-sm mt-1">$89.00</div></div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-20 h-20 bg-protools-card rounded-xl flex items-center justify-center p-3 shrink-0 border border-gray-800 group-hover:border-gray-600 transition-colors"><img alt="Thumb" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM6VCJ_9BNum5DwAufneVzM4rc5xBMLmBEk20Ar_6IaSCSOdz2zKd5qStTt8zDn-2Dk0k0ioejDMGJEMa3D4sCaR-u2Y2JDZF_gElp321XpZFA00uDnfHrgadPNvGsM5aCY4zWPX5PCZaf4dvBgsD1JzH6AFTJ3XKpMu9Q2vmxKRmomR6vvlfqUZBA3riRuXn9Yd4f5tymAkhMDsx6MQX1kKEX_lvilG5sIDSw-Q8JX0f3YYo-Fa_P"/></div>
+<div><h4 class="font-semibold text-[1.125rem] text-gray-300 group-hover:text-white transition line-clamp-1">Makita 5Ah Battery</h4><div class="text-protools-red font-bold text-sm mt-1">$119.00</div></div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-20 h-20 bg-protools-card rounded-xl flex items-center justify-center p-3 shrink-0 border border-gray-800 group-hover:border-gray-600 transition-colors"><img alt="Thumb" class="max-h-full object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5AwOJDsbRlLcG1LjARasLAwmKARqHyMahREc1-hIuB9rXk5QSCUmVSWJ38NpiOMdhtP4VDCz_U0RwkVpOs826M7kJckql0VKYjPeemOiq5e3xl8uCBt31U-FOSbZvIuBIluexaLEMkHjX22YKrUrdewAcZjn-WZ9WPCzkNDGInsxUBUUFqgxJxA_XnfsKQ5NkkQ3DrRVPY883wg7gSnpKt-uz2mcPt1BjNGMnfqan6g9aj2APNJTI"/></div>
+<div><h4 class="font-semibold text-[1.125rem] text-gray-300 group-hover:text-white transition line-clamp-1">Pro Heavy Duty Bag</h4><div class="text-protools-red font-bold text-sm mt-1">$45.00</div></div>
+</div>
+</div>
+</div>
+<!-- From Latest News -->
+<div>
+<h3 class="font-condensed text-[2rem] font-bold uppercase mb-8 tracking-wide border-b border-gray-800 pb-2">From Latest News</h3>
+<div class="grid grid-cols-2 gap-6">
+<a class="block group" href="#">
+<div class="h-28 bg-gray-800 rounded-xl overflow-hidden mb-3 relative border border-gray-800">
+<img alt="Blog" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVv67fYCO41L-22nz93PUA-t2IV9gc3IOAcBUnz1PQ1eB8QoJhFSEgyav_aadl5DYkcHyMNB6v-FVYIVqjRij50qqw-iDegbBEGpp6rrFwL5TDUMM6AZSisy7QZIIlw5OnR6N8A-26E-O8eIta9pkYqyiVZF4np-Atz0c4OdEwuGatJCB_C0TDAOIs55FLgKFfv0SsQFvvdejvBGocpYUQD5ogqOka6aS8hX4qITbTH2nl9PZj5t3l"/>
+</div>
+<h4 class="text-sm font-semibold text-gray-400 group-hover:text-protools-red transition line-clamp-2" title="How to choose the right drill for your project">How to choose the right drill for your project</h4>
+</a>
+<a class="block group" href="#">
+<div class="h-28 bg-gray-800 rounded-xl overflow-hidden mb-3 relative border border-gray-800">
+<img alt="Blog" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOq7ZuU82iXW-3ua5OIVcLnS4F16dCofw35A0p-JXa8Cv9tllvdMfz7x0K2vO6zjDxZyPceFfgcmY_9BXM3fcG4YFGjgLJNQJhAEiUIgI_NrA58jXUMSCa5dvgiDj5KSlVjWhcVAJmsOcHBqODyamWBCbjFNPEKFWcS4vUrXE1IhTIzMohWfmgahc-M6SrQtJ7EMLjp3J1rrYLEkTyzDE2MdxEZbiPey8q2kxoAODnO-6XTUoVidn1"/>
+</div>
+<h4 class="text-sm font-semibold text-gray-400 group-hover:text-protools-red transition line-clamp-2" title="New safety standards for construction sites 2024">New safety standards for construction sites 2024</h4>
+</a>
+<a class="block group" href="#">
+<div class="h-28 bg-gray-800 rounded-xl overflow-hidden mb-3 relative border border-gray-800">
+<img alt="Blog" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP3vwDmEhTpRt4GROdbX7W3TlFNxzNwk_ZgiAUk3v3BiupbpkDneL45DtQVhF-TdfUDuFAQzRQQLjJVTnmsOP5ahaytFR8BlV04c4GSYuT-e-yKzVFLJRtuydStOqk3igwoQRs_Q5hix9QNYWzFbtdI5yY5VIJK_RQK7NZ0n7MVIQlx0OGZlzv5bREY1yI5deied-GeRVZkOgI-ZYYrFP2xSqRiRLUjDlgCvLdB_a-v1BlHJGHec2j"/>
+</div>
+<h4 class="text-sm font-semibold text-gray-400 group-hover:text-protools-red transition line-clamp-2" title="Top 10 essential tools for home mechanics">Top 10 essential tools for home mechanics</h4>
+</a>
+<a class="block group" href="#">
+<div class="h-28 bg-gray-800 rounded-xl overflow-hidden mb-3 relative border border-gray-800">
+<img alt="Blog" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsb0KqCnEB9wdACEsFG1fSqW_EUo1iYM93VnFA0aDKXo1yHJUaNvLbFUhihVxSsfbLlKHL7jQcH38e0mVzaJ5roKn7wi1u0nfUDlWppX0nCa6_cA4Z0K0DcCWMwiZFcKyuvmVNc-FxcE2qFg-6wow_znnqAo7bsZ5_0Ro8yXAgvbiFRbzRVoIiVNI0ZZnvpVgGpIZx1hQWBiGSVxGvExfFr-XJaYTDxxinCPVmTF4D__K-b2kTw6Re"/>
+</div>
+<h4 class="text-sm font-semibold text-gray-400 group-hover:text-protools-red transition line-clamp-2" title="Maintaining your welding equipment">Maintaining your welding equipment</h4>
+</a>
+</div>
+</div>
+<!-- Feature Strip -->
+<div class="flex flex-col gap-6 mt-4">
+<div class="flex items-center gap-4 bg-protools-card p-4 rounded-xl border border-gray-800">
+<div class="w-12 h-12 rounded-full bg-protools-red/10 flex items-center justify-center text-protools-red shrink-0 border border-protools-red/20">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm uppercase mb-1">Free Delivery</h4>
+<p class="text-gray-500 text-xs">For US customers including Alaska and Hawaii on orders over $500</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-protools-card p-4 rounded-xl border border-gray-800">
+<div class="w-12 h-12 rounded-full bg-protools-red/10 flex items-center justify-center text-protools-red shrink-0 border border-protools-red/20">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm uppercase mb-1">Genuine Warranty</h4>
+<p class="text-gray-500 text-xs">We accept Visa, American Express, Paypal, Payoneer, Mastercard and Discover</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-protools-card p-4 rounded-xl border border-gray-800">
+<div class="w-12 h-12 rounded-full bg-protools-red/10 flex items-center justify-center text-protools-red shrink-0 border border-protools-red/20">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm uppercase mb-1">Flexible Payment</h4>
+<p class="text-gray-500 text-xs">All of our products are made with care and created for the user against manufacturing defects</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- END: Right Sidebar -->
+</main>
+<!-- END: Main Content Area -->
+<!-- BEGIN: Footer -->
+<footer class="bg-protools-dark mt-auto border-t border-gray-800">
+<!-- Newsletter Bar -->
+<div class="bg-gradient-to-r from-protools-red to-protools-orange py-8 px-6">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+<div>
+<h3 class="font-condensed text-[2rem] font-bold uppercase text-white tracking-wide">Join The Pro Squad</h3>
+<p class="text-white/90 text-sm mt-1">Get 10% off your first order and exclusive access to new arrivals.</p>
+</div>
+<div class="w-full md:w-auto flex-grow max-w-md flex">
+<input class="w-full bg-white text-gray-900 px-4 py-3 rounded-l-lg border-0 focus:ring-2 focus:ring-protools-black outline-none" placeholder="Enter your email address" type="email"/>
+<button class="bg-protools-black text-white px-6 py-3 rounded-r-lg font-bold uppercase tracking-wider hover:bg-gray-900 transition-colors">Subscribe</button>
+</div>
+</div>
+</div>
+<!-- Main Footer Links -->
+<div class="max-w-screen-2xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div>
+<h4 class="text-white font-bold uppercase mb-4 tracking-wider">Shop</h4>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a class="hover:text-protools-red transition-colors" href="#">Power Tools</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Hand Tools</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Safety Equipment</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Tool Storage</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Accessories</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold uppercase mb-4 tracking-wider">Support</h4>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a class="hover:text-protools-red transition-colors" href="#">Track Order</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Returns &amp; Exchanges</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Shipping Info</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Warranty</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold uppercase mb-4 tracking-wider">Company</h4>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a class="hover:text-protools-red transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-protools-red transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold uppercase mb-4 tracking-wider">Connect</h4>
+<div class="flex gap-4 mb-4">
+<a class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-protools-red hover:text-white transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-protools-red hover:text-white transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-protools-red hover:text-white transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.163 0 7.398 2.967 7.398 6.923 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.633 0 12.017 0z"></path></svg>
+</a>
+</div>
+<p class="text-sm text-gray-500">Call us: 1-800-PRO-TOOLS</p>
+<p class="text-sm text-gray-500">Email: support@protools.com</p>
+</div>
+</div>
+<!-- Copyright Bar -->
+<div class="border-t border-gray-800 py-6 text-center text-sm text-gray-500">
+<p>© 2024 PROTOOLS. All rights reserved.</p>
+</div>
+</footer>
+<!-- END: Footer -->
+</body></html>

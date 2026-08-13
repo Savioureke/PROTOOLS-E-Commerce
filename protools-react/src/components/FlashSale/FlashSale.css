@@ -1,0 +1,67 @@
+.flash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s4);
+  margin-bottom: var(--s5);
+}
+.flash-subtitle { font-size: 0.8125rem; color: var(--text-muted); margin-top: var(--s1); }
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--s3) var(--s5);
+}
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+}
+.countdown-digit {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--orange);
+  animation: tickPulse 1s ease infinite;
+  display: block;
+}
+.countdown-label {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-top: var(--s1);
+}
+.countdown-sep {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  align-self: flex-start;
+  margin-top: 4px;
+  animation: tickPulse 1s ease infinite;
+}
+.countdown-expired {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.flash-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s4);
+}
+
+@media (max-width: 1279px) { .flash-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 479px)  { .flash-grid { grid-template-columns: 1fr; } }

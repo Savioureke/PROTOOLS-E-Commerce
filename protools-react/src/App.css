@@ -1,0 +1,6 @@
+/* PROTOOLS App Layout styles */
+.app-wrapper {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+}

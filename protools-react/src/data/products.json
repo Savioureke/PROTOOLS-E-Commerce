@@ -1,0 +1,659 @@
+{
+  "products": [
+    {
+      "id": "p001",
+      "name": "DeWalt Laser Level Kit 3D-4D",
+      "slug": "dewalt-laser-level-kit-3d-4d",
+      "brand": "DeWalt",
+      "category": "Measuring",
+      "subcategory": "Laser Levels",
+      "price": 8500,
+      "originalPrice": 11000,
+      "currency": "KSh",
+      "discount": 23,
+      "image": "../assets/products/dewalt-laser-level-1.jpeg",
+      "images": [
+        "../assets/products/dewalt-laser-level-1.jpeg",
+        "../assets/products/dewalt-laser-level-2.jpeg"
+      ],
+      "rating": 4.8,
+      "reviews": 127,
+      "stock": 15,
+      "badge": "sale",
+      "tags": ["laser", "level", "measuring", "3D", "4D", "dewalt"],
+      "description": "Professional DeWalt 3D-4D Laser Level Kit with MAXLIGHT technology. Includes self-leveling, 12 lines, outdoor mode, and a full accessory kit in a rugged carrying case.",
+      "features": [
+        "3D/4D Self-leveling laser",
+        "12 laser lines (green beam)",
+        "MAXLIGHT green beam technology",
+        "±3mm/10m accuracy",
+        "IP54 dust and water resistant",
+        "Includes tripod and carrying case"
+      ],
+      "featured": true,
+      "isNew": false,
+      "isTopRated": true,
+      "isPopular": true,
+      "isFlashSale": false
+    },
+    {
+      "id": "p002",
+      "name": "DeWalt Laser Level Pro",
+      "slug": "dewalt-laser-level-pro",
+      "brand": "DeWalt",
+      "category": "Measuring",
+      "subcategory": "Laser Levels",
+      "price": 11500,
+      "originalPrice": 14000,
+      "currency": "KSh",
+      "discount": 18,
+      "image": "../assets/products/dewalt-laser-level-2.jpeg",
+      "images": [
+        "../assets/products/dewalt-laser-level-2.jpeg",
+        "../assets/products/dewalt-laser-level-1.jpeg"
+      ],
+      "rating": 4.7,
+      "reviews": 89,
+      "stock": 8,
+      "badge": "sale",
+      "tags": ["laser", "level", "measuring", "professional", "dewalt"],
+      "description": "Advanced DeWalt Laser Level Pro with enhanced range and professional-grade accuracy. Perfect for large construction sites and professional contractors.",
+      "features": [
+        "360° laser projection",
+        "50m indoor / 100m outdoor range",
+        "Green beam for high visibility",
+        "Magnetic pivot bracket included",
+        "Li-Ion rechargeable battery",
+        "Hard case included"
+      ],
+      "featured": false,
+      "isNew": true,
+      "isTopRated": true,
+      "isPopular": false,
+      "isFlashSale": true
+    },
+    {
+      "id": "p003",
+      "name": "Makita Inverter Welding Machine",
+      "slug": "makita-inverter-welding-machine",
+      "brand": "Makita",
+      "category": "Welding",
+      "subcategory": "MMA Welders",
+      "price": 9500,
+      "originalPrice": 12000,
+      "currency": "KSh",
+      "discount": 21,
+      "image": "../assets/products/makita-welding-machine.jpeg",
+      "images": [
+        "../assets/products/makita-welding-machine.jpeg"
+      ],
+      "rating": 4.6,
+      "reviews": 203,
+      "stock": 22,
+      "badge": "hot",
+      "tags": ["welding", "inverter", "mma", "makita", "machine"],
+      "description": "Professional Makita Inverter Welding Machine — portable, stable, and efficient. Handles 2.5mm to 3.2mm rutil electrodes. Perfect for home and professional use.",
+      "features": [
+        "Inverter technology (IGBT)",
+        "Input: 220V ±15%",
+        "Welding current: 20-200A",
+        "Compatible with 2.5–3.2mm electrodes",
+        "Overload protection",
+        "Compact and portable design"
+      ],
+      "featured": true,
+      "isNew": false,
+      "isTopRated": false,
+      "isPopular": true,
+      "isFlashSale": true
+    },
+    {
+      "id": "p004",
+      "name": "DeWalt MIG Welding Machine",
+      "slug": "dewalt-mig-welding-machine",
+      "brand": "DeWalt",
+      "category": "Welding",
+      "subcategory": "MIG Welders",
+      "price": 14500,
+      "originalPrice": 18000,
+      "currency": "KSh",
+      "discount": 19,
+      "image": "../assets/products/dewalt-welding-machine.jpeg",
+      "images": [
+        "../assets/products/dewalt-welding-machine.jpeg"
+      ],
+      "rating": 4.9,
+      "reviews": 67,
+      "stock": 5,
+      "badge": "featured",
+      "tags": ["welding", "mig", "dewalt", "professional"],
+      "description": "Heavy-duty DeWalt MIG Welding Machine built for professional environments. Superior arc stability with adjustable parameters for precise welding on all metal types.",
+      "features": [
+        "MIG/MAG welding capability",
+        "140A continuous output",
+        "Digital display panel",
+        "Variable wire speed control",
+        "Thermal overload protection",
+        "Euro torch connector"
+      ],
+      "featured": false,
+      "isNew": false,
+      "isTopRated": true,
+      "isPopular": false,
+      "isFlashSale": false
+    },
+    {
+      "id": "p005",
+      "name": "Makita Circular Saw HS7000",
+      "slug": "makita-circular-saw-hs7000",
+      "brand": "Makita",
+      "category": "Cutting",
+      "subcategory": "Circular Saws",
+      "price": 6500,
+      "originalPrice": 8500,
+      "currency": "KSh",
+      "discount": 24,
+      "image": "../assets/products/makita-circular-saw.jpeg",
+      "images": [
+        "../assets/products/makita-circular-saw.jpeg"
+      ],
+      "rating": 4.7,
+      "reviews": 312,
+      "stock": 18,
+      "badge": "sale",
+      "tags": ["circular saw", "cutting", "makita", "HS7000", "wood"],
+      "description": "Makita HS7000 185mm Circular Saw — powerful 1200W motor, precision bevel cutting, and a lightweight design for professional and DIY woodworking.",
+      "features": [
+        "185mm (7-1/4\") blade diameter",
+        "1,200W powerful motor",
+        "5,800 RPM no-load speed",
+        "56° max bevel capacity",
+        "Electric brake system",
+        "Dust blower function"
+      ],
+      "featured": true,
+      "isNew": false,
+      "isTopRated": true,
+      "isPopular": true,
+      "isFlashSale": true
+    },
+    {
+      "id": "p006",
+      "name": "Makita Complete Tool Kit",
+      "slug": "makita-complete-tool-kit",
+      "brand": "Makita",
+      "category": "Kits",
+      "subcategory": "Tool Sets",
+      "price": 6500,
+      "originalPrice": 9000,
+      "currency": "KSh",
+      "discount": 28,
+      "image": "../assets/products/makita-tool-kit.jpeg",
+      "images": [
+        "../assets/products/makita-tool-kit.jpeg",
+        "../assets/products/makita-complete-tool-kit.jpeg"
+      ],
+      "rating": 4.8,
+      "reviews": 445,
+      "stock": 30,
+      "badge": "hot",
+      "tags": ["toolkit", "set", "makita", "drill", "complete", "kit"],
+      "description": "Comprehensive Makita tool kit featuring a cordless drill, pliers, wrenches, screwdrivers, drill bits, and 2 Li-Ion batteries — all in a durable carry case.",
+      "features": [
+        "Cordless drill/driver included",
+        "2x Li-Ion battery packs",
+        "Combination & needle-nose pliers",
+        "Adjustable wrench",
+        "48-piece screwdriver set",
+        "Hard case with foam insert"
+      ],
+      "featured": true,
+      "isNew": false,
+      "isTopRated": true,
+      "isPopular": true,
+      "isFlashSale": false
+    },
+    {
+      "id": "p007",
+      "name": "Makita 88V Cordless Drill Kit",
+      "slug": "makita-88v-cordless-drill-kit",
+      "brand": "Makita",
+      "category": "Drills",
+      "subcategory": "Cordless Drills",
+      "price": 12000,
+      "originalPrice": 15500,
+      "currency": "KSh",
+      "discount": 23,
+      "image": "../assets/products/makita-88v-cordless-drill-kit.jpeg",
+      "images": [
+        "../assets/products/makita-88v-cordless-drill-kit.jpeg"
+      ],
+      "rating": 4.6,
+      "reviews": 178,
+      "stock": 12,
+      "badge": "new",
+      "tags": ["drill", "cordless", "88v", "makita", "kit", "battery"],
+      "description": "Makita 88V Cordless Drill Kit — high torque, variable speed, and two-speed gearbox for all drilling and fastening applications.",
+      "features": [
+        "88V high-capacity battery",
+        "2-speed gearbox (0-400/0-1500 RPM)",
+        "13mm single-sleeve keyless chuck",
+        "21-stage clutch",
+        "Built-in LED work light",
+        "Ergonomic anti-slip grip"
+      ],
+      "featured": false,
+      "isNew": true,
+      "isTopRated": false,
+      "isPopular": true,
+      "isFlashSale": false
+    },
+    {
+      "id": "p008",
+      "name": "Makita Pro Tool Set 108pc",
+      "slug": "makita-pro-tool-set-108pc",
+      "brand": "Makita",
+      "category": "Kits",
+      "subcategory": "Tool Sets",
+      "price": 8000,
+      "originalPrice": 10500,
+      "currency": "KSh",
+      "discount": 24,
+      "image": "../assets/products/makita-complete-tool-kit.jpeg",
+      "images": [
+        "../assets/products/makita-complete-tool-kit.jpeg",
+        "../assets/products/makita-tool-kit.jpeg"
+      ],
+      "rating": 4.5,
+      "reviews": 223,
+      "stock": 20,
+      "badge": "sale",
+      "tags": ["toolkit", "108pc", "makita", "professional", "set"],
+      "description": "Premium 108-piece Makita professional tool set — everything from sockets and bits to measuring tape and spirit level in a well-organized hard case.",
+      "features": [
+        "108-piece complete set",
+        "Chrome vanadium steel tools",
+        "Socket set (metric & imperial)",
+        "Bi-material handle screwdrivers",
+        "Measuring tape & spirit level",
+        "Organized carry case"
+      ],
+      "featured": false,
+      "isNew": false,
+      "isTopRated": false,
+      "isPopular": true,
+      "isFlashSale": true
+    },
+    {
+      "id": "p009",
+      "name": "Makita Rotary Hammer Kit",
+      "slug": "makita-rotary-hammer-kit",
+      "brand": "Makita",
+      "category": "Drills",
+      "subcategory": "Rotary Hammers",
+      "price": 7500,
+      "originalPrice": 9500,
+      "currency": "KSh",
+      "discount": 21,
+      "image": "../assets/products/makita-rotary-hammer-kit.jpeg",
+      "images": [
+        "../assets/products/makita-rotary-hammer-kit.jpeg"
+      ],
+      "rating": 4.7,
+      "reviews": 156,
+      "stock": 9,
+      "badge": "sale",
+      "tags": ["rotary", "hammer", "drill", "makita", "concrete", "kit"],
+      "description": "Makita SDS Plus Rotary Hammer Kit — ideal for concrete, masonry, and tough drilling tasks. Includes multiple SDS bits and a carrying case.",
+      "features": [
+        "SDS Plus chuck system",
+        "3 operation modes: drill, hammer, chisel",
+        "800W powerful motor",
+        "3.2J impact energy",
+        "Anti-vibration technology",
+        "Includes 5 SDS bits + case"
+      ],
+      "featured": false,
+      "isNew": false,
+      "isTopRated": true,
+      "isPopular": false,
+      "isFlashSale": false
+    },
+    {
+      "id": "p010",
+      "name": "DeWalt 20V Cordless Combo Kit",
+      "slug": "dewalt-20v-cordless-combo-kit",
+      "brand": "DeWalt",
+      "category": "Kits",
+      "subcategory": "Combo Kits",
+      "price": 18500,
+      "originalPrice": 23000,
+      "currency": "KSh",
+      "discount": 20,
+      "image": "../assets/products/dewalt-cordless-combo-kit.jpeg",
+      "images": [
+        "../assets/products/dewalt-cordless-combo-kit.jpeg"
+      ],
+      "rating": 4.9,
+      "reviews": 88,
+      "stock": 7,
+      "badge": "featured",
+      "tags": ["dewalt", "20v", "cordless", "combo", "kit", "drill", "saw"],
+      "description": "DeWalt 20V MAX Cordless Combo Kit — drill/driver + circular saw + worklight, all powered by the same 20V battery platform. Ultimate job site package.",
+      "features": [
+        "20V MAX battery system",
+        "Drill/driver: 0-450/0-1500 RPM",
+        "Circular saw: 5,150 RPM",
+        "3 Li-Ion batteries included",
+        "Fast charger included",
+        "Kit bag included"
+      ],
+      "featured": true,
+      "isNew": false,
+      "isTopRated": true,
+      "isPopular": true,
+      "isFlashSale": false
+    },
+    {
+      "id": "p011",
+      "name": "DeWalt Rotary Hammer Drill",
+      "slug": "dewalt-rotary-hammer-drill",
+      "brand": "DeWalt",
+      "category": "Drills",
+      "subcategory": "Rotary Hammers",
+      "price": 9000,
+      "originalPrice": 11500,
+      "currency": "KSh",
+      "discount": 22,
+      "image": "../assets/products/dewalt-rotary-hammer-drill.jpeg",
+      "images": [
+        "../assets/products/dewalt-rotary-hammer-drill.jpeg"
+      ],
+      "rating": 4.8,
+      "reviews": 134,
+      "stock": 14,
+      "badge": "hot",
+      "tags": ["dewalt", "rotary", "hammer", "drill", "concrete", "SDS"],
+      "description": "DeWalt SDS Rotary Hammer Drill for heavy-duty concrete drilling. Features SHOCKS active vibration control for user comfort during extended use.",
+      "features": [
+        "SDS Plus chuck",
+        "1100W motor",
+        "SHOCKS active vibration control",
+        "3 modes: drill/hammer/chisel",
+        "4.2J impact energy",
+        "Variable speed trigger"
+      ],
+      "featured": false,
+      "isNew": false,
+      "isTopRated": false,
+      "isPopular": true,
+      "isFlashSale": true
+    },
+    {
+      "id": "p012",
+      "name": "Bosch Rotary Hammer Drill",
+      "slug": "bosch-rotary-hammer-drill",
+      "brand": "Bosch",
+      "category": "Drills",
+      "subcategory": "Rotary Hammers",
+      "price": 11000,
+      "originalPrice": 13500,
+      "currency": "KSh",
+      "discount": 19,
+      "image": "../assets/products/bosch-rotary-hammer-drill.jpeg",
+      "images": [
+        "../assets/products/bosch-rotary-hammer-drill.jpeg"
+      ],
+      "rating": 4.7,
+      "reviews": 209,
+      "stock": 11,
+      "badge": "new",
+      "tags": ["bosch", "rotary", "hammer", "drill", "SDS", "concrete"],
+      "description": "Bosch Professional SDS Plus Rotary Hammer — anti-vibration system, 3 function modes, and a dust-protected design for demanding job site conditions.",
+      "features": [
+        "SDS Plus chuck system",
+        "Anti-vibration system (AVS)",
+        "900W motor",
+        "3.2J impact energy",
+        "Constant speed under load",
+        "Dust protection on all buttons"
+      ],
+      "featured": false,
+      "isNew": true,
+      "isTopRated": true,
+      "isPopular": false,
+      "isFlashSale": false
+    },
+    {
+      "id": "p013",
+      "name": "DERA Pressure Washer",
+      "slug": "dera-pressure-washer",
+      "brand": "DERA",
+      "category": "Cleaning",
+      "subcategory": "Pressure Washers",
+      "price": 5500,
+      "originalPrice": 7000,
+      "currency": "KSh",
+      "discount": 21,
+      "image": "../assets/products/dera-washer-machine.jpeg",
+      "images": [
+        "../assets/products/dera-washer-machine.jpeg"
+      ],
+      "rating": 4.3,
+      "reviews": 97,
+      "stock": 25,
+      "badge": "sale",
+      "tags": ["pressure washer", "cleaning", "dera", "car wash"],
+      "description": "DERA High-Pressure Washer — compact and powerful for car washing, garden cleaning, and home surface cleaning. Easy to use with multiple nozzle attachments.",
+      "features": [
+        "1500W motor",
+        "Max pressure: 130 bar",
+        "Flow rate: 6L/min",
+        "5m high-pressure hose",
+        "4 quick-connect nozzles",
+        "Thermal motor protection"
+      ],
+      "featured": false,
+      "isNew": false,
+      "isTopRated": false,
+      "isPopular": true,
+      "isFlashSale": true
+    },
+    {
+      "id": "p014",
+      "name": "YDS High-Pressure Washer",
+      "slug": "yds-high-pressure-washer",
+      "brand": "YDS",
+      "category": "Cleaning",
+      "subcategory": "Pressure Washers",
+      "price": 4500,
+      "originalPrice": 6000,
+      "currency": "KSh",
+      "discount": 25,
+      "image": "../assets/products/yds-pressure-washer.jpeg",
+      "images": [
+        "../assets/products/yds-pressure-washer.jpeg"
+      ],
+      "rating": 4.2,
+      "reviews": 64,
+      "stock": 32,
+      "badge": "sale",
+      "tags": ["pressure washer", "yds", "cleaning", "garden", "car"],
+      "description": "YDS Compact High-Pressure Washer — budget-friendly performance for everyday cleaning tasks. Lightweight and easy to store with integrated hose reel.",
+      "features": [
+        "1200W motor",
+        "Max pressure: 110 bar",
+        "4L/min flow rate",
+        "Built-in detergent bottle",
+        "Integrated cable storage",
+        "Compact upright design"
+      ],
+      "featured": false,
+      "isNew": true,
+      "isTopRated": false,
+      "isPopular": false,
+      "isFlashSale": false
+    }
+  ],
+  "categories": [
+    { "id": "cat-all",      "name": "All",         "icon": "grid",    "slug": "all" },
+    { "id": "cat-drills",   "name": "Drills",      "icon": "drill",   "slug": "drills" },
+    { "id": "cat-cutting",  "name": "Cutting",     "icon": "saw",     "slug": "cutting" },
+    { "id": "cat-welding",  "name": "Welding",     "icon": "weld",    "slug": "welding" },
+    { "id": "cat-kits",     "name": "Kits",        "icon": "kit",     "slug": "kits" },
+    { "id": "cat-measuring","name": "Measuring",   "icon": "level",   "slug": "measuring" },
+    { "id": "cat-cleaning", "name": "Cleaning",    "icon": "washer",  "slug": "cleaning" }
+  ],
+  "brands": ["DeWalt", "Makita", "Bosch", "DERA", "YDS"],
+  "pricingPlans": [
+    {
+      "id": "plan-basic",
+      "name": "Basic",
+      "tagline": "DIY Starter",
+      "price": 0,
+      "period": "Free",
+      "color": "#2A2A2A",
+      "features": [
+        "Browse all products",
+        "Wishlist (up to 10)",
+        "Standard shipping rates",
+        "Email support"
+      ],
+      "cta": "Get Started"
+    },
+    {
+      "id": "plan-pro",
+      "name": "Pro",
+      "tagline": "For Professionals",
+      "price": 999,
+      "period": "/ month",
+      "color": "#E31E24",
+      "badge": "Popular",
+      "features": [
+        "Priority stock alerts",
+        "Unlimited wishlist",
+        "5% member discount",
+        "Free delivery on orders >KSh 5,000",
+        "Phone support"
+      ],
+      "cta": "Get Now"
+    },
+    {
+      "id": "plan-business",
+      "name": "Business",
+      "tagline": "For Contractors",
+      "price": 2499,
+      "period": "/ month",
+      "color": "#FF6A00",
+      "badge": "Best Value",
+      "features": [
+        "Bulk pricing discounts",
+        "Dedicated account manager",
+        "10% member discount",
+        "Free delivery always",
+        "Same-day dispatch priority",
+        "Invoice & credit terms"
+      ],
+      "cta": "Get Now"
+    }
+  ],
+  "heroSlides": [
+    {
+      "id": "h001",
+      "title": "New Arrivals",
+      "subtitle": "Power Tool Deals",
+      "description": "Professional-grade tools for every job. Up to 30% off this week.",
+      "cta": "Shop Now",
+      "ctaLink": "/pages/shop.html",
+      "image": "../assets/products/dewalt-laser-level-1.jpeg",
+      "badge": "Limited Offer"
+    },
+    {
+      "id": "h002",
+      "title": "Makita Combo",
+      "subtitle": "Complete Kits",
+      "description": "Everything you need on the job site — drills, saws, and more.",
+      "cta": "View Kits",
+      "ctaLink": "/pages/shop.html",
+      "image": "../assets/products/makita-tool-kit.jpeg",
+      "badge": "Best Seller"
+    },
+    {
+      "id": "h003",
+      "title": "Professional",
+      "subtitle": "Welding Machines",
+      "description": "Industrial-grade welders from Makita and DeWalt at unbeatable prices.",
+      "cta": "Shop Welding",
+      "ctaLink": "/pages/shop.html",
+      "image": "../assets/products/makita-welding-machine.jpeg",
+      "badge": "Hot Deal"
+    }
+  ],
+  "promoBanners": [
+    {
+      "id": "promo-001",
+      "title": "DeWalt Cordless",
+      "subtitle": "Combo Kit — Save 20%",
+      "image": "../assets/products/dewalt-cordless-combo-kit.jpeg",
+      "cta": "Shop Now",
+      "link": "/pages/shop.html",
+      "theme": "dark"
+    },
+    {
+      "id": "promo-002",
+      "title": "Makita Circular Saw",
+      "subtitle": "Professional Grade — KSh 6,500",
+      "image": "../assets/products/makita-circular-saw.jpeg",
+      "cta": "Buy Now",
+      "link": "/pages/shop.html",
+      "theme": "red"
+    }
+  ],
+  "newsArticles": [
+    {
+      "id": "news-001",
+      "title": "Bosch vs DeWalt: Which Rotary Hammer is Right for You?",
+      "excerpt": "We compare the two industry giants head-to-head across power, durability, and value for money.",
+      "image": "../assets/products/bosch-rotary-hammer-drill.jpeg",
+      "date": "2026-08-10",
+      "readTime": "4 min read"
+    },
+    {
+      "id": "news-002",
+      "title": "Top 5 Must-Have Power Tools for Kenyan Contractors",
+      "excerpt": "From rotary hammers to inverter welders — here are the tools every professional needs on site.",
+      "image": "../assets/products/makita-rotary-hammer-kit.jpeg",
+      "date": "2026-08-05",
+      "readTime": "6 min read"
+    },
+    {
+      "id": "news-003",
+      "title": "Pressure Washer Buying Guide — DERA vs YDS",
+      "excerpt": "Which pressure washer offers the best value for home and professional cleaning in Kenya?",
+      "image": "../assets/products/dera-washer-machine.jpeg",
+      "date": "2026-07-28",
+      "readTime": "3 min read"
+    }
+  ],
+  "services": [
+    { "icon": "truck",    "title": "Free Delivery",   "desc": "On orders over KSh 5,000 within Nairobi" },
+    { "icon": "shield",   "title": "Warranty",        "desc": "1-year warranty on all products" },
+    { "icon": "headset",  "title": "24/7 Support",    "desc": "Call or WhatsApp: 0712 054061" },
+    { "icon": "refresh",  "title": "Easy Returns",    "desc": "7-day hassle-free returns policy" }
+  ],
+  "storeInfo": {
+    "name": "PROTOOLS",
+    "tagline": "Only The Best",
+    "phone": "0712 054061",
+    "whatsapp": "+254712054061",
+    "email": "info@protools.co.ke",
+    "location": "Nairobi, Kenya",
+    "currency": "KSh",
+    "socialMedia": {
+      "facebook": "#",
+      "instagram": "#",
+      "twitter": "#",
+      "youtube": "#"
+    }
+  }
+}

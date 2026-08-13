@@ -1,0 +1,18 @@
+# Node.js portable runtime
+.node/
+.npm-cache/
+
+# React project dependencies and build output
+protools-react/node_modules/
+protools-react/dist/
+protools-react/.env
+protools-react/.env.local
+protools-react/.env.development.local
+protools-react/.env.test.local
+protools-react/.env.production.local
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
