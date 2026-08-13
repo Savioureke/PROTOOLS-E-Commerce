@@ -11,11 +11,17 @@ export default function HomePage() {
 
   return (
     <main className="page-content" aria-label="Home page">
+      {/* Full-width Hero above the columns */}
+      <section className="home-hero-wrap" style={{ marginBottom: 'var(--s6)' }}>
+        <div className="container">
+          <Hero />
+        </div>
+      </section>
+
       <div className="container">
         <div className="layout-cols">
           {/* ── LEFT COLUMN (70%) ── */}
           <div className="layout-main">
-            <Hero />
             <PromoBanners />
             <CategoryIcons activeCategory={activeCategory} onChange={setActiveCategory} />
             <BestSellers activeCategory={activeCategory} />
